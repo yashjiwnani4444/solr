@@ -1,0 +1,96 @@
+<dataConfig>
+    <dataSource type="JdbcDataSource"
+                driver="com.mysql.jdbc.Driver"
+                url="jdbc:mysql://localhost:3306/ofbiz?useSSL=false"
+                user="root"
+                password="Yash@1626"/>
+    <document>
+        <entity name="product"
+pk="PRODUCT_ID"
+                query="select * from product"
+                deltaImportQuery="select PRODUCT_CATEGORY_ID,PRODUCT_ID from product_category_member where PRODUCT_ID in (select PRODUCT_ID from product)"
+                deltaQuery="SELECT PRODUCT_ID FROM product  WHERE LAST_UPDATED_STAMP > '${dih.2021-05-05}'"
+        >
+            <field column="PRODUCT_ID" name="id"/>s
+            <field column="PRODUCT_TYPE_ID" name="PRODUCT_TYPE_ID"/>
+            <field column="PRIMARY_PRODUCT_CATEGORY_ID" name="PRIMARY_PRODUCT_CATEGORY_ID"/>
+            <field column="FACILITY_ID" name="FACILITY_ID"/>
+            <field column="INTRODUCTION_DATE" name="INTRODUCTION_DATE"/>
+            <field column="RELEASE_DATE" name="RELEASE_DATE"/>
+            <field column="SUPPORT_DISCONTINUATION_DATE" name="SUPPORT_DISCONTINUATION_DATE"/>
+            <field column="SALES_DISCONTINUATION_DATE" name="SALES_DISCONTINUATION_DATE"/>
+            <field column="SALES_DISC_WHEN_NOT_AVAIL" name="SALES_DISC_WHEN_NOT_AVAIL"/>
+            <field column="INTERNAL_NAME" name="squ"/>
+            <field column="PRODUCT_CATEGORY_ID" name="PRODUCT_CATEGORY_ID"/>
+            <field column="LONG_DESCRIPTION" name="LONG_DESCRIPTION"/>
+            <field column="PRICE_DETAIL_TEXT" name="PRICE_DETAIL_TEXT"/>
+            <field column="SMALL_IMAGE_URL" name="SMALL_IMAGE_URL"/>
+            <field column="MEDIUM_IMAGE_URL" name="MEDIUM_IMAGE_URL"/>
+            <field column="LARGE_IMAGE_URL" name="LARGE_IMAGE_URL"/>
+            <field column="DETAIL_IMAGE_URL" name="DETAIL_IMAGE_URL"/>
+            <field column="ORIGINAL_IMAGE_URL" name="ORIGINAL_IMAGE_URL"/>
+            <field column="DETAIL_SCREEN" name="DETAIL_SCREEN"/>
+            <field column="INVENTORY_MESSAGE" name="INVENTORY_MESSAGE"/>
+            <field column="INVENTORY_ITEM_TYPE_ID" name="INVENTORY_ITEM_TYPE_ID"/>
+            <field column="REQUIRE_INVENTORY" name="REQUIRE_INVENTORY"/>
+            <field column="QUANTITY_UOM_ID" name="QUANTITY_UOM_ID"/>
+            <field column="QUANTITY_INCLUDED" name="QUANTITY_INCLUDED"/>
+            <field column="REQUIRE_AMOUNT" name="REQUIRE_AMOUNT"/>
+            <field column="FIXED_AMOUNT" name="FIXED_AMOUNT"/>
+            <field column="AMOUNT_UOM_TYPE_ID" name="AMOUNT_UOM_TYPE_ID"/>
+            <field column="WEIGHT_UOM_ID" name="WEIGHT_UOM_ID"/>
+            <field column="SHIPPING_WEIGHT" name="SHIPPING_WEIGHT"/>
+            <field column="PRODUCT_WEIGHT" name="PRODUCT_WEIGHT"/>
+            <field column="HEIGHT_UOM_ID" name="HEIGHT_UOM_ID"/>
+            <field column="PRODUCT_HEIGHT" name="PRODUCT_HEIGHT"/>
+            <field column="SHIPPING_HEIGHT" name="SHIPPING_HEIGHT"/>
+            <field column="PRODUCT_WIDTH" name="PRODUCT_WIDTH"/>
+            <field column="SHIPPING_WIDTH" name="SHIPPING_WIDTH"/>
+            <field column="DEPTH_UOM_ID" name="DEPTH_UOM_ID"/>
+            <field column="PRODUCT_DEPTH" name="PRODUCT_DEPTH"/>
+            <field column="SHIPPING_DEPTH" name="SHIPPING_DEPTH"/>
+            <field column="DIAMETER_UOM_ID" name="DIAMETER_UOM_ID"/>
+            <field column="PRODUCT_DIAMETER" name="PDCTID"/>
+            <field column="PRODUCT_RATING" name="PRODUCT_DIAMETER"/>
+            <field column="RATING_TYPE_ENUM" name="RATING_TYPE_ENUM"/>
+            <field column="RETURNABLE" name="RETURNABLE"/>
+            <field column="TAXABLE" name="TAXABLE"/>
+            <field column="CHARGE_SHIPPING" name="CHARGE_SHIPPING"/>
+            <field column="SHIPPING_HEIGHT" name="AUTO_CREATE_KEYWORDS"/>
+            <field column="INCLUDE_IN_PROMOTIONS" name="INCLUDE_IN_PROMOTIONS"/>
+            <field column="IS_VIRTUAL" name="IS_VIRTUAL"/>
+            <field column="IS_VARIANT" name="IS_VARIANT"/>
+            <field column="VIRTUAL_VARIANT_METHOD_ENUM" name="VIRTUAL_VARIANT_METHOD_ENUM"/>
+            <field column="ORIGIN_GEO_ID" name="ORIGIN_GEO_ID"/>
+            <field column="REQUIREMENT_METHOD_ENUM_ID" name="REQUIREMENT_METHOD_ENUM_ID"/>
+            <field column="RESERV_MAX_PERSONS" name="RESERV_MAX_PERSONS"/>
+            <field column="RESERV2ND_P_P_PERC" name="RESERV2ND_P_P_PERC"/>
+            <field column="RESERV_NTH_P_P_PERC" name="RESERV_NTH_P_P_PERC"/>
+            <field column="CONFIG_ID" name="CONFIG_ID"/>
+            <field column="CREATED_DATE" name="CREATED_DATE"/>
+            <field column="CREATED_BY_USER_LOGIN" name="CREATED_BY_USER_LOGIN"/>
+            <field column="LAST_MODIFIED_DATE" name="LAST_MODIFIED_DATE"/>
+            <field column="LAST_MODIFIED_BY_USER_LOGIN" name="LAST_MODIFIED_BY_USER_LOGIN"/>
+            <field column="IN_SHIPPING_BOX" name="IN_SHIPPING_BOX"/>
+            <field column="DEFAULT_SHIPMENT_BOX_TYPE_ID" name="DEFAULT_SHIPMENT_BOX_TYPE_ID"/>
+            <field column="LOT_ID_FILLED_IN" name="LOT_ID_FILLED_IN"/>
+            <field column="ORDER_DECIMAL_QUANTITY" name="ORDER_DECIMAL_QUANTITY"/>
+            <field column="LAST_UPDATED_STAMP" name="LAST_UPDATED_STAMP"/>
+            <field column="LAST_UPDATED_TX_STAMP" name="LAST_UPDATED_TX_STAMP"/>
+            <field column="CREATED_STAMP" name="CREATED_STAMP"/>
+            <field column="CREATED_TX_STAMP" name="CREATED_TX_STAMP"/>
+        </entity>
+        <entity name="category"
+        pk="PRODUCT_ID"
+        query="select PRODUCT_CATEGORY_ID from product_category_member inner join product on product.PRODUCT_ID=product_category_member.PRODUCT_ID"
+
+
+        >
+            <field column="PRIMARY_PRODUCT_CATEGORY_ID" name="PRIMARY_PRODUCT_CATEGORY_ID"/>
+            <field column="PRODUCT_CATEGORY_ID" name="PRODUCT_CATEGORY_ID"/>
+            <field column="PRODUCT_ID" name="id"/>
+
+        </entity>
+
+    </document>
+</dataConfig>
